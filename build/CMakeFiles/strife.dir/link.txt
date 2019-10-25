@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++1z   CMakeFiles/strife.dir/main.cpp.o  -o strife common/libcommon.a core/libcore.a common/libcommon.a /usr/lib/x86_64-linux-gnu/libboost_filesystem.so /usr/lib/x86_64-linux-gnu/libboost_system.so 
