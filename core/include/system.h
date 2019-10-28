@@ -1,11 +1,9 @@
-#ifndef SYSTEM_H
-#define SYSTEM_H
+#pragma once
 
 #include <iostream>
 #include <functional>
 #include <set>
-#include "action.h"
-#include "dispatcher.h"
+#include "common/dispatcher.h"
 #include "events.h"
 #include "scene.h"
 
@@ -87,5 +85,3 @@ namespace strife {
         
     }
 }
-
-#endif

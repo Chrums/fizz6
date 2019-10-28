@@ -8,7 +8,7 @@ set(Strife_VERSION_MINOR 0)
 
 configure_file(
     "${PROJECT_SOURCE_DIR}/config.h.in"
-    "${PROJECT_BINARY_DIR}/config.h"
+    "${PROJECT_BINARY_DIR}/include/config.h"
 )
 
 find_package(Boost 1.65.1 COMPONENTS
@@ -20,13 +20,17 @@ if(NOT Boost_FOUND)
     message(FATAL_ERROR "Boost")
 endif()
 
+set(STRIFE_INCLUDE_DIR ${PROJECT_BINARY_DIR}/include)
+
 add_subdirectory(common)
 add_subdirectory(core)
 
-include_directories("${PROJECT_BINARY_DIR}")
+include_directories(${STRIFE_INCLUDE_DIR})
 add_executable(strife main.cpp)
 
 target_link_libraries(strife
     common
     core
 )
+
+install(TARGETS strife DESTINATION ${PROJECT_BINARY_DIR}/bin)

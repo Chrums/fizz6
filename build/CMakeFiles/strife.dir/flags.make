@@ -6,5 +6,5 @@ CXX_FLAGS =  -std=c++1z
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/ubuntu/environment/build -I/home/ubuntu/environment/common/include -I/home/ubuntu/environment/core/include 
+CXX_INCLUDES = -I/home/ubuntu/environment/build/include 
 

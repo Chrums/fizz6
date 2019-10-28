@@ -3,12 +3,12 @@
 namespace strife {
     namespace common {
         
-        class Event {
+        class Message {
             
         public:
         
-            Event() = default;
-            virtual ~Event() = default;
+            Message() = default;
+            virtual ~Message() = default;
             
         };
         

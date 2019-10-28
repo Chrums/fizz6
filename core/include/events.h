@@ -1,5 +1,4 @@
-#ifndef EVENTS_H
-#define EVENTS_H
+#pragma once
 
 #include "event.h"
 #include "scene.h"
@@ -60,5 +59,3 @@ namespace strife {
         
     }
 }
-
-#endif

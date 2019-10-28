@@ -1,5 +1,4 @@
-#ifndef ITERATOR_H
-#define ITERATOR_H
+#pragma once
 
 namespace strife {
     namespace common {
@@ -22,5 +21,3 @@ namespace strife {
 
     }
 }
-
-#endif

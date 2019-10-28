@@ -1,9 +1,7 @@
-#ifndef ENTITY_H
-#define ENTITY_H
+#pragma once
 
 #include <typeindex>
-#include "iterator.h"
-#include "unique.h"
+#include "common/unique.h"
 
 namespace strife {
     namespace core {
@@ -70,5 +68,3 @@ namespace strife {
         
     }
 }
-
-#endif

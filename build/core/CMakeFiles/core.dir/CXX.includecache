@@ -6,53 +6,11 @@
 
 #IncludeRegexTransform: 
 
-../common/include/action.h
-iostream
--
-functional
--
-vector
--
-
-../common/include/dispatcher.h
-functional
--
-map
--
-typeindex
--
-vector
--
-event.h
-../common/include/event.h
-
-../common/include/event.h
-
-../common/include/identifier.h
-boost/uuid/uuid.hpp
--
-
-../common/include/iterator.h
-
-../common/include/unique.h
-boost/uuid/uuid.hpp
--
-boost/uuid/random_generator.hpp
--
-boost/uuid/nil_generator.hpp
--
-boost/lexical_cast.hpp
--
-boost/uuid/uuid_io.hpp
--
-identifier.h
-../common/include/identifier.h
-
 ../core/include/component.h
-entity.h
-../core/include/entity.h
 unique.h
 ../core/include/unique.h
+entity.h
+../core/include/entity.h
 
 ../core/include/engine.h
 map
@@ -61,10 +19,10 @@ string
 -
 typeindex
 -
-dispatcher.h
-../core/include/dispatcher.h
-event.h
-../core/include/event.h
+common/dispatcher.h
+../core/include/common/dispatcher.h
+common/event.h
+../core/include/common/event.h
 scene.h
 ../core/include/scene.h
 system.h
@@ -73,10 +31,10 @@ system.h
 ../core/include/entity.h
 typeindex
 -
-iterator.h
-../core/include/iterator.h
-unique.h
-../core/include/unique.h
+common/unique.h
+../core/include/common/unique.h
+
+../core/include/event.h
 
 ../core/include/events.h
 event.h
@@ -91,22 +49,22 @@ set
 -
 typeindex
 -
+common/unique.h
+../core/include/common/unique.h
 storage.h
 ../core/include/storage.h
-unique.h
-../core/include/unique.h
 
 ../core/include/storage.h
 map
 -
+common/identifier.h
+../core/include/common/identifier.h
+common/iterator.h
+../core/include/common/iterator.h
 component.h
 ../core/include/component.h
 entity.h
 ../core/include/entity.h
-identifier.h
-../core/include/identifier.h
-iterator.h
-../core/include/iterator.h
 
 ../core/include/system.h
 iostream
@@ -115,10 +73,8 @@ functional
 -
 set
 -
-action.h
-../core/include/action.h
-dispatcher.h
-../core/include/dispatcher.h
+common/dispatcher.h
+../core/include/common/dispatcher.h
 events.h
 ../core/include/events.h
 scene.h
@@ -141,6 +97,8 @@ scene.h
 /home/ubuntu/environment/core/src/scene.h
 storage.h
 /home/ubuntu/environment/core/src/storage.h
+
+/home/ubuntu/environment/core/src/event.cpp
 
 /home/ubuntu/environment/core/src/scene.cpp
 scene.h

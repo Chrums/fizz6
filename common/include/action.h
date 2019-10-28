@@ -1,5 +1,4 @@
-#ifndef ACTION_H
-#define ACTION_H
+#pragma once
 
 #include <iostream>
 #include <functional>
@@ -45,5 +44,3 @@ namespace strife {
         
     }
 }
-
-#endif

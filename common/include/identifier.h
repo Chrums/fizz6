@@ -1,5 +1,4 @@
-#ifndef IDENTIFIER_H
-#define IDENTIFIER_H
+#pragma once
 
 #include <boost/uuid/uuid.hpp>
 
@@ -10,5 +9,3 @@ namespace strife {
         
     }
 }
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef DISPATCHER_H
-#define DISPATCHER_H
+#pragma once
 
 #include <functional>
 #include <map>
@@ -67,5 +66,3 @@ namespace strife {
         
     }
 }
-
-#endif

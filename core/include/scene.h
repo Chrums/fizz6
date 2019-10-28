@@ -1,11 +1,10 @@
-#ifndef SCENE_H
-#define SCENE_H
+#pragma once
 
 #include <map>
 #include <set>
 #include <typeindex>
+#include "common/unique.h"
 #include "storage.h"
-#include "unique.h"
 
 namespace strife {
     namespace core {
@@ -107,5 +106,3 @@ namespace strife {
         
     }
 }
-
-#endif

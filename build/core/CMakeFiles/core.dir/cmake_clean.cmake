@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/core.dir/src/component.cpp.o"
   "CMakeFiles/core.dir/src/engine.cpp.o"
   "CMakeFiles/core.dir/src/entity.cpp.o"
+  "CMakeFiles/core.dir/src/event.cpp.o"
   "CMakeFiles/core.dir/src/scene.cpp.o"
   "CMakeFiles/core.dir/src/storage.cpp.o"
   "CMakeFiles/core.dir/src/system.cpp.o"

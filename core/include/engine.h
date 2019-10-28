@@ -1,11 +1,10 @@
-#ifndef ENGINE_H
-#define ENGINE_H
+#pragma once
 
 #include <map>
 #include <string>
 #include <typeindex>
-#include "dispatcher.h"
-#include "event.h"
+#include "common/dispatcher.h"
+#include "common/event.h"
 #include "scene.h"
 #include "system.h"
 
@@ -90,5 +89,3 @@ namespace strife {
         
     }
 }
-
-#endif

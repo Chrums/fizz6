@@ -1,11 +1,10 @@
-#ifndef STORAGE_H
-#define STORAGE_H
+#pragma once
 
 #include <map>
+#include "common/identifier.h"
+#include "common/iterator.h"
 #include "component.h"
 #include "entity.h"
-#include "identifier.h"
-#include "iterator.h"
 
 namespace strife {
     namespace core {
@@ -100,5 +99,3 @@ namespace strife {
         
     }
 }
-
-#endif

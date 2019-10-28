@@ -1,8 +1,7 @@
-#ifndef COMPONENT_H
-#define COMPONENT_H
+#pragma once
 
-#include "entity.h"
 #include "unique.h"
+#include "entity.h"
 
 namespace strife {
     namespace core {
@@ -20,5 +19,3 @@ namespace strife {
         
     }
 }
-
-#endif

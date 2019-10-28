@@ -129,9 +129,33 @@ core/CMakeFiles/core.dir/src/entity.cpp.o.provides: core/CMakeFiles/core.dir/src
 core/CMakeFiles/core.dir/src/entity.cpp.o.provides.build: core/CMakeFiles/core.dir/src/entity.cpp.o
 
 
+core/CMakeFiles/core.dir/src/event.cpp.o: core/CMakeFiles/core.dir/flags.make
+core/CMakeFiles/core.dir/src/event.cpp.o: ../core/src/event.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/environment/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object core/CMakeFiles/core.dir/src/event.cpp.o"
+	cd /home/ubuntu/environment/build/core && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core.dir/src/event.cpp.o -c /home/ubuntu/environment/core/src/event.cpp
+
+core/CMakeFiles/core.dir/src/event.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/core.dir/src/event.cpp.i"
+	cd /home/ubuntu/environment/build/core && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/environment/core/src/event.cpp > CMakeFiles/core.dir/src/event.cpp.i
+
+core/CMakeFiles/core.dir/src/event.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/core.dir/src/event.cpp.s"
+	cd /home/ubuntu/environment/build/core && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/environment/core/src/event.cpp -o CMakeFiles/core.dir/src/event.cpp.s
+
+core/CMakeFiles/core.dir/src/event.cpp.o.requires:
+
+.PHONY : core/CMakeFiles/core.dir/src/event.cpp.o.requires
+
+core/CMakeFiles/core.dir/src/event.cpp.o.provides: core/CMakeFiles/core.dir/src/event.cpp.o.requires
+	$(MAKE) -f core/CMakeFiles/core.dir/build.make core/CMakeFiles/core.dir/src/event.cpp.o.provides.build
+.PHONY : core/CMakeFiles/core.dir/src/event.cpp.o.provides
+
+core/CMakeFiles/core.dir/src/event.cpp.o.provides.build: core/CMakeFiles/core.dir/src/event.cpp.o
+
+
 core/CMakeFiles/core.dir/src/scene.cpp.o: core/CMakeFiles/core.dir/flags.make
 core/CMakeFiles/core.dir/src/scene.cpp.o: ../core/src/scene.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/environment/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object core/CMakeFiles/core.dir/src/scene.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/environment/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object core/CMakeFiles/core.dir/src/scene.cpp.o"
 	cd /home/ubuntu/environment/build/core && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core.dir/src/scene.cpp.o -c /home/ubuntu/environment/core/src/scene.cpp
 
 core/CMakeFiles/core.dir/src/scene.cpp.i: cmake_force
@@ -155,7 +179,7 @@ core/CMakeFiles/core.dir/src/scene.cpp.o.provides.build: core/CMakeFiles/core.di
 
 core/CMakeFiles/core.dir/src/storage.cpp.o: core/CMakeFiles/core.dir/flags.make
 core/CMakeFiles/core.dir/src/storage.cpp.o: ../core/src/storage.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/environment/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object core/CMakeFiles/core.dir/src/storage.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/environment/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object core/CMakeFiles/core.dir/src/storage.cpp.o"
 	cd /home/ubuntu/environment/build/core && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core.dir/src/storage.cpp.o -c /home/ubuntu/environment/core/src/storage.cpp
 
 core/CMakeFiles/core.dir/src/storage.cpp.i: cmake_force
@@ -179,7 +203,7 @@ core/CMakeFiles/core.dir/src/storage.cpp.o.provides.build: core/CMakeFiles/core.
 
 core/CMakeFiles/core.dir/src/system.cpp.o: core/CMakeFiles/core.dir/flags.make
 core/CMakeFiles/core.dir/src/system.cpp.o: ../core/src/system.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/environment/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object core/CMakeFiles/core.dir/src/system.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/environment/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object core/CMakeFiles/core.dir/src/system.cpp.o"
 	cd /home/ubuntu/environment/build/core && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/core.dir/src/system.cpp.o -c /home/ubuntu/environment/core/src/system.cpp
 
 core/CMakeFiles/core.dir/src/system.cpp.i: cmake_force
@@ -206,6 +230,7 @@ core_OBJECTS = \
 "CMakeFiles/core.dir/src/component.cpp.o" \
 "CMakeFiles/core.dir/src/engine.cpp.o" \
 "CMakeFiles/core.dir/src/entity.cpp.o" \
+"CMakeFiles/core.dir/src/event.cpp.o" \
 "CMakeFiles/core.dir/src/scene.cpp.o" \
 "CMakeFiles/core.dir/src/storage.cpp.o" \
 "CMakeFiles/core.dir/src/system.cpp.o"
@@ -216,12 +241,13 @@ core_EXTERNAL_OBJECTS =
 core/libcore.a: core/CMakeFiles/core.dir/src/component.cpp.o
 core/libcore.a: core/CMakeFiles/core.dir/src/engine.cpp.o
 core/libcore.a: core/CMakeFiles/core.dir/src/entity.cpp.o
+core/libcore.a: core/CMakeFiles/core.dir/src/event.cpp.o
 core/libcore.a: core/CMakeFiles/core.dir/src/scene.cpp.o
 core/libcore.a: core/CMakeFiles/core.dir/src/storage.cpp.o
 core/libcore.a: core/CMakeFiles/core.dir/src/system.cpp.o
 core/libcore.a: core/CMakeFiles/core.dir/build.make
 core/libcore.a: core/CMakeFiles/core.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/environment/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX static library libcore.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/environment/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX static library libcore.a"
 	cd /home/ubuntu/environment/build/core && $(CMAKE_COMMAND) -P CMakeFiles/core.dir/cmake_clean_target.cmake
 	cd /home/ubuntu/environment/build/core && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/core.dir/link.txt --verbose=$(VERBOSE)
 
@@ -233,6 +259,7 @@ core/CMakeFiles/core.dir/build: core/libcore.a
 core/CMakeFiles/core.dir/requires: core/CMakeFiles/core.dir/src/component.cpp.o.requires
 core/CMakeFiles/core.dir/requires: core/CMakeFiles/core.dir/src/engine.cpp.o.requires
 core/CMakeFiles/core.dir/requires: core/CMakeFiles/core.dir/src/entity.cpp.o.requires
+core/CMakeFiles/core.dir/requires: core/CMakeFiles/core.dir/src/event.cpp.o.requires
 core/CMakeFiles/core.dir/requires: core/CMakeFiles/core.dir/src/scene.cpp.o.requires
 core/CMakeFiles/core.dir/requires: core/CMakeFiles/core.dir/src/storage.cpp.o.requires
 core/CMakeFiles/core.dir/requires: core/CMakeFiles/core.dir/src/system.cpp.o.requires

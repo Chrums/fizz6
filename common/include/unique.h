@@ -1,5 +1,4 @@
-#ifndef UNIQUE_H
-#define UNIQUE_H
+#pragma once
 
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/random_generator.hpp>
@@ -35,5 +34,3 @@ namespace strife {
         
     }
 }
-
-#endif
