@@ -17,17 +17,19 @@ class TestComponent : public Component {
     
 public:
 
-    static void Subscribe(System<TestComponent>& system) {
-        system.updateAction += &TestComponent::onUpdate;
-        system.renderAction += &TestComponent::onRender;
+    static void Subscribe(Dispatcher dispatcher) {
+        dispatcher.subscribe<InitializeEvent>(&TestComponent::onInitialize);
     }
     
-    static void Unsubscribe(System<TestComponent>& system) {
-        system.updateAction -= &TestComponent::onUpdate;
-        system.renderAction -= &TestComponent::onRender;
+    static void Unsubscribe(Dispatcher dispatcher) {
+        dispatcher.unsubscribe<InitializeEvent>(&TestComponent::onInitialize);
     }
     
 private:
+
+    void onInitialize(const InitializeEvent& initializeEvent) {
+        cout << "Initialize" << endl;
+    }
 
     void onUpdate(const UpdateEvent& updateEvent) {
         cout << "Update" << endl;
@@ -59,12 +61,16 @@ class TestSystem : public ISystem {
     
 };
 
+void tester() {
+    cout << "Test" << endl;
+}
+
 int main(int argc, char const *argv[]) {
     
     Engine& engine = Engine::Instance();
-    engine.systems.initialize<System<TestComponent>>();
+    engine.systems.add<System<TestComponent>>();
     Scene& scene = engine.scenes.load("");
-    scene.components.initialize<TestComponent>();
+    scene.components.add<TestComponent>();
     Entity e0 = scene.entities.add();
     e0.components.add<TestComponent>();
     Entity e1 = scene.entities.add();

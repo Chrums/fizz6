@@ -27,6 +27,7 @@ namespace strife {
             private:
             
                 Scene& scene_;
+                
                 std::set<Entity> entities_;
                 
             };
@@ -41,11 +42,24 @@ namespace strife {
                 ~Components();
                 
                 template <class C>
-                Storage<C>& initialize() {
+                Storage<C>& add() {
                     std::type_index type(typeid(C));
                     Storage<C>* const storage = new Storage<C>();
                     components_.insert({type, storage});
                     return *storage;
+                }
+                
+                template <class C>
+                void remove() {
+                    std::type_index type(typeid(C));
+                    components_.erase(type);
+                }
+                
+                template <class C>
+                Storage<C>& get() const {
+                    std::type_index type(typeid(C));
+                    IStorage& storage = get(type);
+                    return static_cast<Storage<C>&>(storage);
                 }
                 
                 template <class C>
@@ -68,16 +82,10 @@ namespace strife {
                     return static_cast<C&>(component);
                 }
                 
-                template <class C>
-                Storage<C>& get() const {
-                    std::type_index type(typeid(C));
-                    IStorage& storage = get(type);
-                    return static_cast<Storage<C>&>(storage);
-                }
-                
             private:
             
                 Scene& scene_;
+                
                 std::map<const std::type_index, IStorage* const> components_;
                 
                 Component& add(const std::type_index type, const Entity entity);

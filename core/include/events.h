@@ -31,6 +31,15 @@ namespace strife {
             
         };
         
+        class InitializeEvent : public common::Event {
+            
+        public:
+            
+            InitializeEvent()
+                : common::Event() {}
+            
+        };
+        
         class UpdateEvent : public common::Event {
             
         public:

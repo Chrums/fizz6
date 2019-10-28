@@ -42,16 +42,29 @@ namespace strife {
                 ~Systems();
                 
                 template <class S>
-                S& initialize() {
+                S& add() {
                     std::type_index type(typeid(S));
                     S* const system = new S(engine_.dispatcher);
                     systems_.insert({type, system});
                     return *system;
                 }
                 
+                template <class S>
+                void remove() {
+                    std::type_index type(typeid(S));
+                    systems_.erase(type);
+                }
+                
+                template <class S>
+                S& get() {
+                    std::type_index type(typeid(S));
+                    return systems_.at(type);
+                }
+                
             private:
             
                 Engine& engine_;
+                
                 std::map<const std::type_index, ISystem* const> systems_;
                 
             };

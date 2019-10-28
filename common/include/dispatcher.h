@@ -15,7 +15,7 @@ namespace strife {
         public:
         
             template <class E>
-            using Callback = std::function<void(const E&)>;
+            using Callback = std::function<void (const E&)>;
             
         protected:
             
@@ -46,11 +46,17 @@ namespace strife {
             void emit(const Event& event);
             
             template <class E>
-            void on(Callback<E> callback) {
+            void subscribe(Callback<E> callback) {
                 const std::type_index type(typeid(E));
                 std::vector<Callback<Event>>& callbacks = callbacks_[type];
                 Binding<E> binding(callback);
                 callbacks.push_back(binding);
+            }
+            
+            template <class E>
+            void unsubscribe(Callback<E> callback) {
+                const std::type_index type(typeid(E));
+                // TODO: Implement this...
             }
             
 		private:

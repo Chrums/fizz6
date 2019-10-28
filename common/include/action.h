@@ -1,7 +1,9 @@
 #ifndef ACTION_H
 #define ACTION_H
 
+#include <iostream>
 #include <functional>
+#include <vector>
 
 namespace strife {
     namespace common {
@@ -17,7 +19,9 @@ namespace strife {
             template <class U>
             void operator+=(U&& callback)
             {
-                callbacks_.emplace_back(std::forward<U>(callback));
+                int address = (int)callback;
+                std::cout << address << std::endl;
+                callbacks_.push_back(std::forward<U>(callback));
             }
             
             template <class U>
@@ -28,7 +32,7 @@ namespace strife {
             
             template <class ... Args>
             void operator()(Args&&... args) const{
-                for(std::function<T>& callback : callbacks_) {
+                for (const std::function<T>& callback : callbacks_) {
                     callback(args...);
                 }
             }
