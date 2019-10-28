@@ -17,12 +17,12 @@ class TestComponent : public Component {
     
 public:
 
-    static void Subscribe(Dispatcher dispatcher) {
-        dispatcher.subscribe<InitializeEvent>(&TestComponent::onInitialize);
+    static void Subscribe(Dispatcher& dispatcher) {
+        
     }
     
-    static void Unsubscribe(Dispatcher dispatcher) {
-        dispatcher.unsubscribe<InitializeEvent>(&TestComponent::onInitialize);
+    static void Unsubscribe(Dispatcher& dispatcher) {
+        
     }
     
 private:
@@ -46,9 +46,9 @@ class TestSystem : public ISystem {
     public:
     
         TestSystem(Dispatcher& dispatcher)
-            : ISystem(dispatcher) {
-            dispatcher.on<SceneLoadEvent>(bind(&TestSystem::OnSceneLoad, this, placeholders::_1));
-            dispatcher.on<SceneUnloadEvent>(bind(&TestSystem::OnSceneUnload, this, placeholders::_1));
+            : ISystem() {
+            dispatcher.subscribe<SceneLoadEvent>(bind(&TestSystem::OnSceneLoad, this, placeholders::_1));
+            dispatcher.subscribe<SceneUnloadEvent>(bind(&TestSystem::OnSceneUnload, this, placeholders::_1));
         }
         
         void OnSceneLoad(const SceneLoadEvent& sceneLoadEvent) {
@@ -61,13 +61,10 @@ class TestSystem : public ISystem {
     
 };
 
-void tester() {
-    cout << "Test" << endl;
-}
-
 int main(int argc, char const *argv[]) {
     
     Engine& engine = Engine::Instance();
+    engine.systems.add<TestSystem>();
     engine.systems.add<System<TestComponent>>();
     Scene& scene = engine.scenes.load("");
     scene.components.add<TestComponent>();

@@ -30,6 +30,7 @@ namespace strife {
                 : ISystem() {
                 dispatcher.subscribe<SceneLoadEvent>(std::bind(&System::onSceneLoad, this, std::placeholders::_1));
                 dispatcher.subscribe<SceneUnloadEvent>(std::bind(&System::onSceneUnload, this, std::placeholders::_1));
+                dispatcher.subscribe<InitializeEvent>(std::bind(&System::onInitialize, this, std::placeholders::_1));
                 dispatcher.subscribe<UpdateEvent>(std::bind(&System::onUpdate, this, std::placeholders::_1));
                 dispatcher.subscribe<RenderEvent>(std::bind(&System::onRender, this, std::placeholders::_1));
                 C::Subscribe(dispatcher_);
@@ -53,6 +54,15 @@ namespace strife {
             void onSceneUnload(const SceneUnloadEvent& sceneUnloadEvent) {
                 Scene* const scene = &(sceneUnloadEvent.scene);
                 scenes_.erase(scene);
+            }
+            
+            void onInitialize(const InitializeEvent& initializeEvent) {
+                for (Scene* const scene : scenes_) {
+                    Storage<C>& storage = scene->components.get<C>();
+                    for (auto [entity, component] : storage) {
+                        //dispatcher_.emit(&component, initializeEvent);
+                    }
+                }
             }
             
             void onUpdate(const UpdateEvent& updateEvent) {

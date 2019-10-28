@@ -5,7 +5,7 @@ using namespace std;
 
 void Dispatcher::emit(const Event& event) {
     const type_index type(typeid(event));
-    std::vector<Callback<Event>> callbacks = callbacks_[type];
+    vector<Callback<Event>> callbacks = callbacks_[type];
     for (Callback<Event> callback : callbacks) {
         callback(event);
     }
