@@ -3,7 +3,7 @@
 #include <iostream>
 #include <functional>
 #include <set>
-#include "common/dispatcher.h"
+#include "dispatcher.h"
 #include "events.h"
 #include "scene.h"
 

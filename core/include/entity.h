@@ -1,7 +1,7 @@
 #pragma once
 
 #include <typeindex>
-#include "common/unique.h"
+#include "unique.h"
 
 namespace strife {
     namespace core {

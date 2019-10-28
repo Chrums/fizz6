@@ -1,8 +1,8 @@
 #pragma once
 
 #include <map>
-#include "common/identifier.h"
-#include "common/iterator.h"
+#include "identifier.h"
+#include "iterator.h"
 #include "component.h"
 #include "entity.h"
 

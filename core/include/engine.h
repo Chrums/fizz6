@@ -3,8 +3,8 @@
 #include <map>
 #include <string>
 #include <typeindex>
-#include "common/dispatcher.h"
-#include "common/event.h"
+#include "dispatcher.h"
+#include "event.h"
 #include "scene.h"
 #include "system.h"
 

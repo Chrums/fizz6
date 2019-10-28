@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.10)
+project(core)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1z")
 
-file(GLOB CORE_INCLUDE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/include/*)
 file(GLOB CORE_SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/*)
-add_library(core ${CORE_SOURCE_FILES})
 
-set(CORE_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include PARENT_SCOPE)
+add_library(${PROJECT_NAME} ${CORE_SOURCE_FILES})
+add_library(strife::core ALIAS ${PROJECT_NAME})
 
 find_package(Boost 1.65.1 COMPONENTS
     filesystem
@@ -17,15 +17,12 @@ if(NOT Boost_FOUND)
     message(FATAL_ERROR "Boost")
 endif()
 
-target_include_directories(core PRIVATE
+target_include_directories(${PROJECT_NAME} PUBLIC
     ${Boost_INCLUDE_DIRS}
-    ${COMMON_INCLUDE_DIR}
-    ${CORE_INCLUDE_DIR}
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
-target_link_libraries(core
+target_link_libraries(${PROJECT_NAME}
     Boost::filesystem
-    common
+    strife::common
 )
-
-install(TARGETS core DESTINATION ${PROJECT_BINARY_DIR}/lib)

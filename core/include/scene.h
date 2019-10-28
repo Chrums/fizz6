@@ -3,7 +3,7 @@
 #include <map>
 #include <set>
 #include <typeindex>
-#include "common/unique.h"
+#include "unique.h"
 #include "storage.h"
 
 namespace strife {

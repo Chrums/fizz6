@@ -29,8 +29,8 @@ include_directories(${STRIFE_INCLUDE_DIR})
 add_executable(strife main.cpp)
 
 target_link_libraries(strife
-    common
-    core
+    strife::common
+    strife::core
 )
 
 install(TARGETS strife DESTINATION ${PROJECT_BINARY_DIR}/bin)
