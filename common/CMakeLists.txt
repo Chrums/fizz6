@@ -3,6 +3,7 @@ project(common)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1z")
 
+file(GLOB COMMON_INCLUDE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/include/*)
 file(GLOB COMMON_SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/*)
 
 add_library(${PROJECT_NAME} ${COMMON_SOURCE_FILES})
@@ -25,3 +26,6 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 target_link_libraries(${PROJECT_NAME}
     Boost::filesystem
 )
+
+install(TARGETS common DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+install(FILES ${COMMON_INCLUDE_FILES} DESTINATION ${CMAKE_INSTALL_PREFIX}/include/common)

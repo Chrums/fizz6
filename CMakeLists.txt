@@ -33,4 +33,4 @@ target_link_libraries(strife
     strife::core
 )
 
-install(TARGETS strife DESTINATION ${PROJECT_BINARY_DIR}/bin)
+install(TARGETS strife DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)

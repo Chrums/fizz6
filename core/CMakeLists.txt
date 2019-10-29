@@ -3,6 +3,7 @@ project(core)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1z")
 
+file(GLOB CORE_INCLUDE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/include/*)
 file(GLOB CORE_SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/src/*)
 
 add_library(${PROJECT_NAME} ${CORE_SOURCE_FILES})
@@ -26,3 +27,6 @@ target_link_libraries(${PROJECT_NAME}
     Boost::filesystem
     strife::common
 )
+
+install(TARGETS core DESTINATION ${CMAKE_INSTALL_PREFIX}/lib)
+install(FILES ${CORE_INCLUDE_FILES} DESTINATION ${CMAKE_INSTALL_PREFIX}/include/core)

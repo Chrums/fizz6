@@ -1,26 +1,26 @@
-// #ifndef CORE_EVENT_H
-// #define CORE_EVENT_H
+#ifndef EVENT_H
+#define EVENT_H
 
-// #include <optional>
-// #include "entity.h"
-// #include "message.h"
+#include <optional>
+#include "entity.h"
+#include "message.h"
 
-// namespace strife {
-//     namespace core {
+namespace strife {
+    namespace core {
         
-//         class Event : common::Message {
+        class Event : public common::Message {
             
-//         public:
+        public:
         
-//             const std::optional<Entity> entity;
+            const std::optional<Entity> target;
             
-//             Event();
-//             Event(const Entity target);
-//             virtual ~Event() = default;
+            Event();
+            Event(const Entity target);
+            virtual ~Event() = default;
             
-//         };
+        };
         
-//     }
-// }
+    }
+}
 
-// #endif
+#endif

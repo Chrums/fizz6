@@ -6,54 +6,54 @@
 namespace strife {
     namespace core {
         
-        class SceneLoadEvent : public common::Event {
+        class SceneLoadEvent : public Event {
             
         public:
         
             Scene& scene;
             
             SceneLoadEvent(Scene& scene)
-                : common::Event()
+                : Event()
                 , scene(scene) {}
             
         };
         
-        class SceneUnloadEvent : public common::Event {
+        class SceneUnloadEvent : public Event {
             
         public:
         
             Scene& scene;
             
             SceneUnloadEvent(Scene& scene)
-                : common::Event()
+                : Event()
                 , scene(scene) {}
             
         };
         
-        class InitializeEvent : public common::Event {
+        class InitializeEvent : public Event {
             
         public:
             
             InitializeEvent()
-                : common::Event() {}
+                : Event() {}
             
         };
         
-        class UpdateEvent : public common::Event {
+        class UpdateEvent : public Event {
             
         public:
             
             UpdateEvent()
-                : common::Event() {}
+                : Event() {}
             
         };
         
-        class RenderEvent : public common::Event {
+        class RenderEvent : public Event {
             
         public:
             
             RenderEvent()
-                : common::Event() {}
+                : Event() {}
             
         };
         

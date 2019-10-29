@@ -4,7 +4,7 @@
 #include <map>
 #include <typeindex>
 #include <vector>
-#include "event.h"
+#include "message.h"
 
 namespace strife {
     namespace common {
@@ -13,27 +13,27 @@ namespace strife {
             
         public:
         
-            template <class E>
-            using Callback = std::function<void (const E&)>;
+            template <class M>
+            using Callback = std::function<void (const M&)>;
             
         protected:
             
-            template <class E>
+            template <class M>
             class Binding {
             
             public:
             
-                Binding(Callback<E> callback)
+                Binding(Callback<M> callback)
                     : callback_(callback) {}
                 ~Binding() = default;
                     
-                void operator()(const Event& event) {
-                    callback_(static_cast<const E&>(event));
+                void operator()(const Message& message) {
+                    callback_(static_cast<const M&>(message));
                 }
                 
             private:
             
-                Callback<E> callback_;
+                Callback<M> callback_;
             
             };
             
@@ -42,25 +42,25 @@ namespace strife {
             Dispatcher() = default;
             ~Dispatcher() = default;
         
-            void emit(const Event& event);
+            void emit(const Message& message);
             
-            template <class E>
-            void subscribe(Callback<E> callback) {
-                const std::type_index type(typeid(E));
-                std::vector<Callback<Event>>& callbacks = callbacks_[type];
-                Binding<E> binding(callback);
+            template <class M>
+            void subscribe(Callback<M> callback) {
+                const std::type_index type(typeid(M));
+                std::vector<Callback<Message>>& callbacks = callbacks_[type];
+                Binding<M> binding(callback);
                 callbacks.push_back(binding);
             }
             
-            template <class E>
-            void unsubscribe(Callback<E> callback) {
-                const std::type_index type(typeid(E));
+            template <class M>
+            void unsubscribe(Callback<M> callback) {
+                const std::type_index type(typeid(M));
                 // TODO: Implement this...
             }
             
 		private:
 		
-			std::map<const std::type_index, std::vector<Callback<Event>>> callbacks_;
+			std::map<const std::type_index, std::vector<Callback<Message>>> callbacks_;
             
         };
         
