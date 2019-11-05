@@ -1,6 +1,5 @@
 #pragma once
 
-#include <iostream>
 #include <functional>
 #include <set>
 #include "dispatcher.h"
@@ -17,68 +16,35 @@ namespace strife {
             ISystem() = default;
             virtual ~ISystem() = default;
             
+            virtual void subscribe(common::Dispatcher& dispatcher) = 0;
+            virtual void unsubscribe(common::Dispatcher& dispatcher) = 0;
+            
         };
         
         template <class C>
         class System : public ISystem {
             
         public:
+        
+            System()
+                : ISystem()
+                , scene_(nullptr) {};
+            ~System() = default;
             
-            System(common::Dispatcher& dispatcher)
-                : ISystem() {
-                dispatcher.subscribe<SceneLoadEvent>(std::bind(&System::onSceneLoad, this, std::placeholders::_1));
-                dispatcher.subscribe<SceneUnloadEvent>(std::bind(&System::onSceneUnload, this, std::placeholders::_1));
-                dispatcher.subscribe<InitializeEvent>(std::bind(&System::onInitialize, this, std::placeholders::_1));
-                dispatcher.subscribe<UpdateEvent>(std::bind(&System::onUpdate, this, std::placeholders::_1));
-                dispatcher.subscribe<RenderEvent>(std::bind(&System::onRender, this, std::placeholders::_1));
-                C::Subscribe(dispatcher_);
+            void subscribe(common::Dispatcher& dispatcher) {
+                dispatcher.subscribe<SceneSwapEvent>(std::bind(&System::onSceneSwap, this, std::placeholders::_1));
             }
             
-            ~System() {
-                C::Unsubscribe(dispatcher_);
+            void unsubscribe(common::Dispatcher& dispatcher) {
+                dispatcher.unsubscribe<SceneSwapEvent>(std::bind(&System::onSceneSwap, this, std::placeholders::_1));
             }
             
         private:
-        
-            common::Dispatcher dispatcher_;
-        
-            std::set<Scene*> scenes_;
-        
-            void onSceneLoad(const SceneLoadEvent& sceneLoadEvent) {
-                Scene* const scene = &(sceneLoadEvent.scene);
-                scenes_.insert(scene);
-            }
             
-            void onSceneUnload(const SceneUnloadEvent& sceneUnloadEvent) {
-                Scene* const scene = &(sceneUnloadEvent.scene);
-                scenes_.erase(scene);
-            }
+            Scene* scene_;
             
-            void onInitialize(const InitializeEvent& initializeEvent) {
-                for (Scene* const scene : scenes_) {
-                    Storage<C>& storage = scene->components.get<C>();
-                    for (auto [entity, component] : storage) {
-                        //dispatcher_.emit(&component, initializeEvent);
-                    }
-                }
-            }
-            
-            void onUpdate(const UpdateEvent& updateEvent) {
-                for (Scene* const scene : scenes_) {
-                    Storage<C>& storage = scene->components.get<C>();
-                    for (auto [entity, component] : storage) {
-                        //updateAction(component, updateEvent);
-                    }
-                }
-            }
-            
-            void onRender(const RenderEvent& renderEvent) {
-                for (Scene* const scene : scenes_) {
-                    Storage<C>& storage = scene->components.get<C>();
-                    for (auto [entity, component] : storage) {
-                        //renderAction(component, renderEvent);
-                    }
-                }
+            void onSceneSwap(const SceneSwapEvent& sceneSwapEvent) {
+                scene_ = sceneSwapEvent.to;
             }
             
         };

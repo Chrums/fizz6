@@ -6,7 +6,8 @@ using namespace strife::core;
 using namespace std;
 
 Engine::Scenes::Scenes(Engine& engine)
-	: engine_(engine) {}
+	: engine_(engine)
+	, active_(nullptr) {}
 
 Scene& Engine::Scenes::load(const string path) {
 	Scene& scene = scenes_.try_emplace(path).first->second;
@@ -24,6 +25,16 @@ void Engine::Scenes::unload(const string path) {
 	engine_.dispatcher.emit(sceneUnloadEvent);
 	
 	scenes_.erase(path);
+}
+
+void Engine::Scenes::swap(const string path) {
+	Scene* const from = active_;
+	Scene* const to = &scenes_.find(path)->second;
+	
+	SceneSwapEvent sceneSwapEvent(from, to);
+	engine_.dispatcher.emit(sceneSwapEvent);
+	
+	active_ = to;
 }
 
 Engine::Systems::Systems(Engine& engine)

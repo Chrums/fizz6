@@ -32,11 +32,11 @@ void Scene::Components::remove(const type_index type, const Entity entity) {
     return components_.at(type)->remove(entity);
 }
 
-IStorage& Scene::Components::get(const type_index type) const {
-    return *components_.at(type);
+Component& Scene::Components::at(const type_index type, const Entity entity) const {
+    return components_.at(type)->at(entity);
 }
 
-Component& Scene::Components::get(const type_index type, const Entity entity) const {
+Component* const Scene::Components::get(const type_index type, const Entity entity) const {
     return components_.at(type)->get(entity);
 }
 

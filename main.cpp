@@ -44,11 +44,18 @@ private:
 class TestSystem : public ISystem {
     
     public:
-    
-        TestSystem(Dispatcher& dispatcher)
-            : ISystem() {
+        
+        TestSystem() = default;
+        ~TestSystem() = default;
+        
+        void subscribe(Dispatcher& dispatcher) {
             dispatcher.subscribe<SceneLoadEvent>(bind(&TestSystem::OnSceneLoad, this, placeholders::_1));
             dispatcher.subscribe<SceneUnloadEvent>(bind(&TestSystem::OnSceneUnload, this, placeholders::_1));
+        }
+        
+        void unsubscribe(Dispatcher& dispatcher) {
+            dispatcher.unsubscribe<SceneLoadEvent>(bind(&TestSystem::OnSceneLoad, this, placeholders::_1));
+            dispatcher.unsubscribe<SceneUnloadEvent>(bind(&TestSystem::OnSceneUnload, this, placeholders::_1));
         }
         
         void OnSceneLoad(const SceneLoadEvent& sceneLoadEvent) {

@@ -18,7 +18,11 @@ void Entity::Components::remove(const type_index type) {
 	entity_.scene.components.remove(type, entity_);
 }
 
-Component& Entity::Components::get(const type_index type) const {
+Component& Entity::Components::at(const type_index type) const {
+	return entity_.scene.components.at(type, entity_);
+}
+
+Component* const Entity::Components::get(const type_index type) const {
 	return entity_.scene.components.get(type, entity_);
 }
 

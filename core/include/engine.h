@@ -4,7 +4,6 @@
 #include <string>
 #include <typeindex>
 #include "dispatcher.h"
-#include "event.h"
 #include "scene.h"
 #include "system.h"
 
@@ -24,11 +23,12 @@ namespace strife {
                 
                 Scene& load(const std::string path);
                 void unload(const std::string path);
+                void swap(const std::string path);
                 
             private:
             
                 Engine& engine_;
-                
+                Scene* active_;
                 std::map<const std::string, Scene> scenes_;
                 
             };
@@ -43,7 +43,8 @@ namespace strife {
                 template <class S>
                 S& add() {
                     std::type_index type(typeid(S));
-                    S* const system = new S(engine_.dispatcher);
+                    S* const system = new S();
+                    system->subscribe(engine_.dispatcher);
                     systems_.insert({type, system});
                     return *system;
                 }
@@ -51,13 +52,24 @@ namespace strife {
                 template <class S>
                 void remove() {
                     std::type_index type(typeid(S));
+                    S* const system = systems_.at(type);
+                    system->unsubscribe(engine_.dispatcher);
                     systems_.erase(type);
                 }
                 
                 template <class S>
-                S& get() {
+                S& at() {
                     std::type_index type(typeid(S));
                     return systems_.at(type);
+                }
+                
+                template <class S>
+                S* get() {
+                    std::type_index type(typeid(S));
+                    auto iterator = systems_.find(type);
+                    return iterator != systems_.end()
+                        ? &iterator->second
+                        : nullptr;
                 }
                 
             private:

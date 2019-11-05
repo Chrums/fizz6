@@ -22,7 +22,8 @@ namespace strife {
                 
                 Component& add(const std::type_index type);
 				void remove(const std::type_index type);
-				Component& get(const std::type_index type) const;
+				Component& at(const std::type_index type) const;
+				Component* const get(const std::type_index type) const;
 				
 				template <class C>
 				C& add() {
@@ -38,10 +39,17 @@ namespace strife {
 				};
 				
 				template <class C>
-				C& get() const {
+				C& at() const {
 					const std::type_index type(typeid(C));
-					Component& component = get(type);
+					Component& component = at(type);
 					return static_cast<C&>(component);
+				};
+				
+				template <class C>
+				C* const get() const {
+					const std::type_index type(typeid(C));
+					Component* const component = get(type);
+					return static_cast<C* const>(component);
 				};
                 
             private:

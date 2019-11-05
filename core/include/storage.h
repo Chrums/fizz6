@@ -18,7 +18,8 @@ namespace strife {
             
             virtual Component& add(const Entity entity) = 0;
             virtual void remove(const Entity entity) = 0;
-            virtual Component& get(const Entity entity) = 0;
+            virtual Component& at(const Entity entity) = 0;
+            virtual Component* const get(const Entity entity) = 0;
             
         };
         
@@ -77,18 +78,25 @@ namespace strife {
                 components_.erase(entity);
             }
             
-            C& get(const Entity entity) {
+            C& at(const Entity entity) {
                 return components_.at(entity);
             }
             
+            C* const get(const Entity entity) {
+                auto iterator = components_.find(entity);
+                return iterator != components_.end()
+                    ? &iterator->second
+                    : nullptr;
+            }
+            
             Iterator begin() {
-                auto mapIterator = components_.begin();
-                return Iterator(mapIterator);
+                auto iterator = components_.begin();
+                return Iterator(iterator);
             }
             
             Iterator end() {
-                auto mapIterator = components_.end();
-                return Iterator(mapIterator);
+                auto iterator = components_.end();
+                return Iterator(iterator);
             }
             
         private:
